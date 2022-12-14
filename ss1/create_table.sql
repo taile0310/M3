@@ -1,5 +1,5 @@
-create database if not exists bai1;
-use bai1;
+create database if not exists create_table;
+use create_table;
 
 create table class(
 id int primary key,
