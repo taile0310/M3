@@ -1,104 +1,106 @@
-create database data_query_student_management;
+create database data_query_sale_management;
 
-use data_query_student_management;
+use data_query_sale_management;
 
-create table class(
-  class_id int auto_increment primary key, 
-  class_name varchar(60) not null, 
-  start_date datetime not null, 
-  `status` bit
+create table customer(
+  customer_id int primary key, 
+  customer_name varchar(50), 
+  customer_age int
 );
 
-create table student(
-  student_id int auto_increment primary key, 
-  student_name varchar(30) not null, 
-  address varchar(50), 
-  phone varchar(20), 
-  `status` bit, 
-  class_id int not null, 
-  foreign key(class_id) references class(class_id)
+create table `order`(
+  order_id int primary key, 
+  order_date date, 
+  order_total_price double, 
+  customer_id int, 
+  foreign key(customer_id) references customer(customer_id)
 );
 
-create table `subject`(
-  sub_id int auto_increment primary key, 
-  sub_name varchar(30) not null, 
-  credit tinyint not null default 1, 
-  `status` bit default 1
+create table product(
+  product_id int primary key, 
+  product_name varchar(50), 
+  product_price double
 );
 
-create table mark(
-  mark_id int auto_increment primary key, 
-  sub_id int not null, 
-  student_id int not null, 
-  mark float, 
-  examtimes tinyint, 
-  unique key(sub_id, student_id), 
-  foreign key(sub_id) references `subject`(sub_id), 
-  foreign key(student_id) references student(student_id)
+create table order_detail(
+  order_id int, 
+  product_id int, 
+  order_qty int, 
+  foreign key(order_id) references `order`(order_id), 
+  foreign key(product_id) references product(product_id)
 );
 
--- thêm mới dữ liệu
-insert into class value (1, 'A1', '2008-12-20', 1), 
-(2, 'A2', '2008-12-22', 1), 
-(3, 'B3', current_date, 0);
+-- thêm thông tin mới
+insert into customer value (1, 'Minh Quan', 10), 
+(2, 'Ngoc Oanh', 20), 
+(3, 'Hong Ha', 50);
 
-insert into student value (1, 'Hung', 'Ha Noi', '0912113113', 1, 1), 
-(2, 'Hoa', 'Hai phong', null, 1, 1), 
-(3, 'Manh', 'HCM', '0123123123', 0, 2);
+insert into product value (1, 'May Giat', 3), 
+(2, 'Tu Lanh', 5), 
+(3, 'Dieu Hoa', 7), 
+(4, 'Quat', 1), 
+(5, 'Bep Dien', 2);
 
-insert into `subject` value (1, 'CF', 5, 1), 
-(2, 'C', 6, 1), 
-(3, 'HDJ', 5, 1), 
-(4, 'RDBMS', 10, 1);
+insert into `order` value (1, '2006/03/21', null, 1), 
+(2, '2006/03/23', null, 2), 
+(3, '2006/03/16', null, 1);
 
-insert into mark value (1, 1, 1, 8, 1), 
-(2, 1, 2, 10, 2), 
-(3, 2, 1, 12, 1);
+insert into order_detail value (1, 1, 3), 
+(1, 3, 7), 
+(1, 4, 2), 
+(2, 1, 1), 
+(3, 1, 8), 
+(2, 5, 4), 
+(2, 3, 3);
 
--- Hiển thị tất cả các sinh viên có tên bắt đầu bảng ký tự ‘h’
+-- Hiển thị các thông tin  gồm oID, oDate, oPrice của tất cả các hóa đơn trong bảng Order
 select 
-  * 
+  order_id, 
+  order_date, 
+  order_total_price 
 from 
-  student 
-where 
-  student_name like 'h%';
+  `order`;
   
--- Hiển thị các thông tin lớp học có thời gian bắt đầu vào tháng 12.
+-- Hiển thị danh sách các khách hàng đã mua hàng, và danh sách sản phẩm được mua bởi các khách
 select 
-  * 
+  distinct c.customer_id, 
+  c.customer_name, 
+  p.product_name, 
+  p.product_price 
 from 
-  class 
-where 
-  month(start_date) = 12;
+  customer c 
+  join `order` o 
+  join product p 
+  join order_detail od on c.customer_id = o.customer_id 
+  and p.product_id = od.product_id 
+  and o.order_id = od.order_id;
   
--- Hiển thị tất cả các thông tin môn học có credit trong khoảng từ 3-5.
+-- Hiển thị tên những khách hàng không mua bất kỳ một sản phẩm nào
 select 
-  * 
+  distinct c.customer_name 
 from 
-  `subject` 
+  customer c 
 where 
-  credit > 2 
-  or credit < 6;
+  c.customer_id not in (
+    select 
+      o.customer_id 
+    from 
+      `order` o 
+    where 
+      o.order_id
+  );
   
--- Thay đổi mã lớp(ClassID) của sinh viên có tên ‘Hung’ là 2
--- lưu ý cần phải mở trước khi thay đổi đối với `status` = 1 (bật chế độ an toàn)
-set 
-  sql_safe_updates = 0;
-update 
-  student 
-set 
-  class_id = 2 
-where 
-  student_name like 'Hung';
-  
--- Hiển thị các thông tin: StudentName, SubName, Mark. Dữ liệu sắp xếp theo điểm thi (mark) giảm dần. nếu trùng sắp theo tên tăng dần.
-select 
-  s.student_name, 
-  sub.sub_name, 
-  mark 
+  -- Hiển thị mã hóa đơn,
+  -- ngày bán và giá tiền của từng hóa đơn (giá một hóa đơn được tính bằng tổng giá bán của từng loại mặt hàng xuất hiện trong hóa đơn.
+  -- Giá bán của từng loại được tính = odQTY*pPrice)
+  select 
+  o.order_id, 
+  o.order_date, 
+  od.order_qty * p.product_price as price 
 from 
-  mark m 
-  join student s on m.student_id = s.student_id 
-  join `subject` sub on m.sub_id = sub.sub_id 
-order by 
-  m.mark desc;
+  `order` o 
+  join product p 
+  join order_detail od on o.order_id = od.order_id 
+  and od.product_id = p.product_id;
+
+  
