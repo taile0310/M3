@@ -89,3 +89,16 @@ where
     where 
       o.order_id
   );
+  
+-- Hiển thị mã hóa đơn,
+-- ngày bán và giá tiền của từng hóa đơn (giá một hóa đơn được tính bằng tổng giá bán của từng loại mặt hàng xuất hiện trong hóa đơn.
+-- Giá bán của từng loại được tính = odQTY*pPrice)
+select 
+  o.order_id, 
+  o.order_date, 
+  od.order_qty * p.product_price as price 
+from 
+  `order` o 
+  join product p 
+  join order_detail od on o.order_id = od.order_id 
+  and od.product_id = p.product_id;
