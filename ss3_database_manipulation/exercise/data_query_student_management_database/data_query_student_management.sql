@@ -77,8 +77,8 @@ select
 from 
   `subject` 
 where 
-  credit > 2 
-  or credit < 6;
+  credit 
+between 3 and 5;
   
 -- Thay đổi mã lớp(ClassID) của sinh viên có tên ‘Hung’ là 2
 -- lưu ý cần phải mở trước khi thay đổi đối với `status` = 1 (bật chế độ an toàn)
