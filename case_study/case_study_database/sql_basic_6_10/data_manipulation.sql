@@ -4,6 +4,7 @@ use furama_management;
 -- chưa từng được khách hàng thực hiện đặt từ quý 1 của năm 2021 (Quý 1 là tháng 1, 2, 3).
 -- giải thích 
 -- NOT IN kiểm tra không nằm trong tập giá trị
+-- Hàm QUARTER() trong SQL trả về quý trong năm từ ngày đã cho, trong khoảng từ bắt đầu tháng 1 đến cuối tháng 3 
 select 
   distinct dv.ma_dich_vu, 
   dv.ten_dich_vu, 
@@ -21,8 +22,8 @@ where
     from 
       hop_dong hd 
     where 
-      ngay_lam_hop_dong between '2021/01/01' 
-      and '2021/03/31'
+      quarter(ngay_lam_hop_dong) = 1 
+      and year(ngay_lam_hop_dong) = 2021
   );
   
 -- 7. Hiển thị thông tin ma_dich_vu, ten_dich_vu, dien_tich, so_nguoi_toi_da, chi_phi_thue, ten_loai_dich_vu của tất cả các loại dịch vụ
@@ -93,6 +94,8 @@ select
   count(hd.ma_khach_hang) as so_luong_khach_dat_phong 
 from 
   hop_dong hd 
+where 
+  year(ngay_lam_hop_dong) = 2021 
 group by 
   month(hd.ngay_lam_hop_dong) 
 order by 
