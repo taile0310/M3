@@ -18,6 +18,7 @@ from
   mark;
   
 -- Hiển thị tất cả các thông tin môn học (bảng subject) có credit lớn nhất.
+-- cách 1 : dùng mệnh đề HAVING
 select 
   sub_id, 
   sub_name, 
@@ -26,18 +27,15 @@ from
   `subject` 
 group by 
   sub_id 
-order by 
-  max desc 
-limit 
-  1;
-select 
-  * 
-from 
-  `subject` 
-order by 
-  credit desc 
-limit 
-  1;
+having 
+  max = (
+    select 
+      max(credit) 
+    from 
+      `subject`
+  );
+  
+-- cách 2 : dùng mệnh đề WHERE
 select 
   * 
 from 
