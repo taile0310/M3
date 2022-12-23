@@ -5,22 +5,19 @@ select
   * 
 from 
   khach_hang;
-  
 select 
   * 
 from 
   loai_khach;
-  
 select 
   * 
 from 
   hop_dong;
-  
 select 
   * 
 from 
   hop_dong_chi_tiet;
-  
+               
 -- 2. Hiển thị thông tin của tất cả nhân viên có trong hệ thống có tên bắt đầu là một trong các ký tự “H”, “T” hoặc “K” và có tối đa 15 kí tự.
 -- giải thích
 -- sử dụng hàm SUBSTRING_INDEX trả về chuỗi con của chuỗi đã cho trước với số lần xuát hiện của dấu cách
@@ -62,19 +59,19 @@ where
 select 
   kh.ma_loai_khach, 
   kh.ho_ten, 
-  hd_ct.so_luong, 
-  lk.ten_loai_khach 
+  count(hd.ma_khach_hang) as so_lan 
 from 
   khach_hang kh 
-  join hop_dong hd 
-  join hop_dong_chi_tiet hd_ct 
-  join loai_khach lk on kh.ma_khach_hang = hd.ma_khach_hang 
-  and hd.ma_hop_dong = hd_ct.ma_hop_dong 
-  and kh.ma_loai_khach = lk.ma_loai_khach 
+  join hop_dong hd on kh.ma_khach_hang = hd.ma_khach_hang 
+  join loai_khach lk on kh.ma_loai_khach = lk.ma_loai_khach 
 where 
-  lk.ten_loai_khach like 'Diamond' 
+  lk.ten_loai_khach = 'Diamond' 
+group by 
+  kh.ma_loai_khach, 
+  kh.ho_ten, 
+  hd.ma_khach_hang 
 order by 
-  so_luong;
+  so_lan;
   
 -- 5. Hiển thị ma_khach_hang, ho_ten, ten_loai_khach, ma_hop_dong, ten_dich_vu, ngay_lam_hop_dong, ngay_ket_thuc, 
 -- tong_tien (Với tổng tiền được tính theo công thức như sau: Chi Phí Thuê + Số Lượng * Giá, 

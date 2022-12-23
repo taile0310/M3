@@ -261,3 +261,4 @@ insert into hop_dong_chi_tiet value (1, 5, 2, 4),
 (6, 1, 1, 3), 
 (7, 2, 1, 2), 
 (8, 2, 12, 2);
+

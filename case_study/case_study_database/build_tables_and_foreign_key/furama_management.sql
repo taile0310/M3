@@ -17,6 +17,33 @@ create table bo_phan(
   ten_bo_phan varchar(45)
 );
 
+
+
+create table loai_khach(
+  ma_loai_khach int primary key, 
+  ten_loai_khach varchar(45)
+);
+
+
+
+create table kieu_thue(
+  ma_kieu_thue int primary key, 
+  ten_kieu_thue varchar(45)
+);
+
+create table loai_dich_vu(
+  ma_loai_dich_vu int primary key, 
+  ten_loai_dich_vu varchar(45)
+);
+
+create table dich_vu_di_kem(
+  ma_dich_vu_di_kem int primary key, 
+  ten_dich_vu_di_kem varchar(45), 
+  gia double, 
+  don_vi varchar(10), 
+  trang_thai varchar(45)
+);
+
 create table nhan_vien(
   ma_nhan_vien int primary key, 
   ho_ten varchar(45), 
@@ -34,11 +61,6 @@ create table nhan_vien(
   foreign key(ma_bo_phan) references bo_phan(ma_bo_phan)
 );
 
-create table loai_khach(
-  ma_loai_khach int primary key, 
-  ten_loai_khach varchar(45)
-);
-
 create table khach_hang(
   ma_khach_hang int primary key, 
   ho_ten varchar(45), 
@@ -50,16 +72,6 @@ create table khach_hang(
   dia_chi varchar(45), 
   ma_loai_khach int, 
   foreign key(ma_loai_khach) references loai_khach(ma_loai_khach)
-);
-
-create table kieu_thue(
-  ma_kieu_thue int primary key, 
-  ten_kieu_thue varchar(45)
-);
-
-create table loai_dich_vu(
-  ma_loai_dich_vu int primary key, 
-  ten_loai_dich_vu varchar(45)
 );
 
 create table dich_vu(
@@ -79,13 +91,7 @@ create table dich_vu(
   foreign key(ma_loai_dich_vu) references loai_dich_vu(ma_loai_dich_vu)
 );
 
-create table dich_vu_di_kem(
-  ma_dich_vu_di_kem int primary key, 
-  ten_dich_vu_di_kem varchar(45), 
-  gia double, 
-  don_vi varchar(10), 
-  trang_thai varchar(45)
-);
+
 
 create table hop_dong(
   ma_hop_dong int primary key, 
