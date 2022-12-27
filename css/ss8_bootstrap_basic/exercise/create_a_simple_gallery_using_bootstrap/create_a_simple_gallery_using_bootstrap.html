@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Responsive Image Gallery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+        .hieuung :hover {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+<h1>
+    Responsive Image Gallery
+</h1>
+<h5>
+    Resize the browser window to see the effect.
+</h5>
+<div class="row d-flex justify-content-center">
+    <!--    col-12, col-sm-6, col-md-3 : hiển thị hình ảnh với nhiều phân khúc khác nhau-->
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="card border-0 solid bg-transparent hieuung" style="width: 24rem ">
+            <!--            boder : tạo đường viền-->
+            <!--            solid bg-transparent : tạo nét liền cho background-->
+            <!--            hieuung : đặt tên cho class hieuung-->
+            <div class="card d-flex justify-content-center">
+                <img src="img/img_fjords.jpg" class="card-img-top" style="width: 100%" height="100%" alt="">
+                <div class="card-body">
+                    <p class="d-flex justify-content-center ">Add a description of the
+                        image here
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="card border-0 solid bg-transparent hieuung" style="width: 24rem">
+            <div class="card d-flex justify-content-center ">
+                <img src="img/img_forest.jpg" class="card-img-top" style="width: 100%" height="100%" alt="">
+                <div class="card-body">
+                    <p class="d-flex justify-content-center ">Add a description of the i
+                        mage here
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="card border-0 solid bg-transparent hieuung" style="width: 24rem">
+            <div class="card d-flex justify-content-center ">
+                <img src="img/img_lights.jpg" class="card-img-top" style="width: 100%" height="100%" alt="">
+                <div class="card-body">
+                    <p class="d-flex justify-content-center ">Add a description of the
+                        image here
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="card border-0 solid bg-transparent hieuung" style="width: 24rem">
+            <div class="card d-flex justify-content-center ">
+                <img src="img/img_mountains.jpg" class="card-img-top" style="width: 100%" height="100%" alt="">
+                <div class="card-body">
+                    <p class="d-flex justify-content-center ">Add a description of the
+                        image here
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="m-lg-3">
+    <p>
+        This example use media queries to re-arrange the image on different screen sizes: for screens larger than 700px
+        wide,
+        it will show four images side by side, for screens smaller than 700px, it will show two images side by side.
+        For screens smaller than 500px, the images will stack verticallly (100%)
+    </p>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous">
+
+</script>
+</html>
