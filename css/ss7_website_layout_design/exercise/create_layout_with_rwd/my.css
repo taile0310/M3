@@ -1,0 +1,116 @@
+.header{
+    background: #1a1e21;
+    color: white;
+    height: 30px;
+}
+
+.indent{
+    text-indent: 40px ;
+}
+
+.row {
+    display: flex ;
+    flex-wrap: wrap;
+    ;
+
+}
+.left {
+    background: gray;
+}
+
+
+.ads{
+    height: 15px;
+    width: 155px;
+    margin: 50px;
+    line-height: 10px;
+    padding: 20px;
+    text-align: center;
+    background: #adb5bd;
+}
+
+.footer{
+    text-align: center;
+    background: #2b3035;
+    color: white;
+    height: 30px;
+
+}
+
+@media only screen and (min-width: 741px) and (max-width: 1240px){
+    .col-md-1{
+        width: 8.33333%;
+    }
+    .col-md-2{
+        width: 16.66667%;
+    }
+    .col-md-3{
+        width: 25%;
+    }
+    .col-md-4{
+        width: 33.33333%;
+    }
+    .col-md-5{
+        width: 41.66667%;
+    }
+    .col-md-6{
+        width: 50%;
+    }
+    .col-md-7{
+        width: 58.33333%;
+    }
+    .col-md-8{
+        width: 66.63337%;
+    }
+    .col-md-9{
+        width: 75%;
+    }
+    .col-md-10{
+        width: 83.33333%;
+    }
+    .col-md-11{
+        width: 91.66667%;
+    }
+    .col-md-12{
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 1241px) {
+    .col-lg-1{
+        width: 8.33333%;
+    }
+    .col-lg-2{
+        width: 16.66667%;
+    }
+    .col-lg-3{
+        width: 25%;
+    }
+    .col-lg-4{
+        width: 33.33333%;
+    }
+    .col-lg-5{
+        width: 41.66667%;
+    }
+    .col-lg-6{
+        width: 50%;
+    }
+    .col-lg-7{
+        width: 58.33333%;
+    }
+    .col-lg-8{
+        width: 66.66667%;
+    }
+    .col-lg-9{
+        width: 75%;
+    }
+    .col-lg-10{
+        width: 83.33333%;
+    }
+    .col-lg-11{
+        width: 91.666667%;
+    }
+    .col-lg-12{
+        width: 100%;
+    }
+}
