@@ -4,6 +4,22 @@
     height: 30px;
 }
 
+.menu{
+    height: 30px;
+    padding: 0;
+    margin: 0;
+}
+
+.li{
+    position: relative;
+    float: left;
+    text-decoration: none;
+    text-align: center;
+    line-height: 30px;
+    width: 100px;
+    height: 30px;
+}
+
 .indent{
     text-indent: 40px ;
 }
