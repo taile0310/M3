@@ -9,7 +9,9 @@
     padding: 0;
     margin: 0;
 }
-
+* {
+    box-sizing: border-box;
+}
 .li{
     position: relative;
     float: left;
@@ -27,9 +29,8 @@
 .row {
     display: flex ;
     flex-wrap: wrap;
-    ;
-
 }
+
 .left {
     background: gray;
 }
