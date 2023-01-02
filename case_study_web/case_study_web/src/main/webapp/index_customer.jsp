@@ -11,6 +11,6 @@
     <title>Customer</title>
 </head>
 <body>
-
+<a href="/customer">Danh sách khách hàng</a>
 </body>
 </html>
