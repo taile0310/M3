@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="af2ed56d-c56e-40b1-aa0e-8ed23cad2156" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/module_3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/module_3.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GiaiThuat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../GiaiThuat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case_study/case_study_database/add_data_to_table/data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case_study/case_study_database/build_tables_and_foreign_key/furama_management.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case_study/case_study_database/sql_advanced_21_25/data_manipulation.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case_study/case_study_database/sql_advanced_26_28/data_manipulation.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case_study/case_study_database/sql_basic_11_15/data_manipulation.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case_study/case_study_database/sql_basic_16_20/data_manipulation.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case_study/case_study_database/sql_basic_2_5/data_manipulation.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case_study/case_study_database/sql_basic_6_10/data_manipulation.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css/ss8_bootstrap_basic/exercise/contruct_landing_page/contruct_landing_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/../css/ss8_bootstrap_basic/exercise/contruct_landing_page/contruct_landing_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss10_jsp_and_jstl_exercise2/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ss10_jsp_and_jstl_exercise2/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss10_jsp_and_jstl_exercise2/src/main/java/exercise/ss10_jsp_and_jstl_exercise2/Servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/ss10_jsp_and_jstl_exercise2/src/main/java/exercise/ss10_jsp_and_jstl_exercise2/Servlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss10_jsp_and_jstl_exercise2/src/main/webapp/result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/ss10_jsp_and_jstl_exercise2/src/main/webapp/result.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss9/demo1/src/main/webapp/result.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss9_web_application_overview/exercise/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss9_web_application_overview/exercise/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss9_web_application_overview/exercise/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss9_web_application_overview/exercise/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss9_web_application_overview/exercise/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss9_web_application_overview/exercise/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss9_web_application_overview/exercise/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss9_web_application_overview/exercise/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss9_web_application_overview/exercise/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss9_web_application_overview/exercise/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss9_web_application_overview/exercise/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss9_web_application_overview/exercise/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss9_web_application_overview/exercise/src/main/java/com/example/exercise/product_discount_calculator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss9_web_application_overview/exercise/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss9_web_application_overview/exercise/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss9_web_application_overview/exercise/src/main/webapp/result.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss9_web_application_overview/ss9_web_application_overview/src/main/webapp/result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../ss9_web_application_overview/ss9_web_application_overview/src/main/webapp/result.jsp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2Jfva2ntr0rX2mvWbUgnxuhHOGo" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/codegym/module_3/ss10_jsp_and_jstl_exercise2"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="af2ed56d-c56e-40b1-aa0e-8ed23cad2156" name="Changes" comment="" />
+      <created>1672482012090</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1672482012090</updated>
+      <workItem from="1672482013290" duration="17000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
