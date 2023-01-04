@@ -32,6 +32,6 @@ public class EmployeeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("employeeList", employeeList);
-        req.getRequestDispatcher("/list_employee.jsp").forward(req,resp);
+        req.getRequestDispatcher("view/list_employee.jsp").forward(req,resp);
     }
 }

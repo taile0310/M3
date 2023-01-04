@@ -17,7 +17,7 @@
 <h1 class="d-flex justify-content-center">Employee</h1>
 <tr><button class="btn btn-outline-success" type="submit">Add</button></tr>
 <form action="/employee" method="get"></form>
-<table class="table table-view">
+<table class="table table-bordered table-view">
     <tr>
         <th>ID</th>
         <th>Name</th>

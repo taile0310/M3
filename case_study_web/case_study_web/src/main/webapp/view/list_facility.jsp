@@ -16,10 +16,45 @@
 <body style="background-color: beige">
 <h1 class="d-flex justify-content-center">Facility</h1>
 <tr>
-    <button class="btn btn-outline-success" type="submit">Add</button>
+    <div>
+        <button type="submit" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                data-bs-whatever="@mdo">Add
+        </button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="justify-content-center modal-title fs-5" id="exampleModalLabel">Add new base</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <fieldset>
+                                <legend>Add Facility</legend>
+                                Name: <input type="text" size="30"/><br/>
+                                Area: <input type="text" size="7"/><br/>
+                                Cost: <input type="text" size="7"/><br/>
+                                Max people: <input type="text" size="7"/><br/>
+                                Rent type: <input type="text" size="7"/><br/>
+                                Standard room: <input type="text" size="7"/><br/>
+                                Des other convenience: <input type="text" size="7"/>
+                                Pool area: <input type="text" size="7"/>
+                                Number floors: <input type="text" size="7"/>
+                                Facility free: <input type="text" size="7"/>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save Facility</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </tr>
 <form action="/facility" method="get"></form>
-<table class="table table-striped ">
+<table class="table table-bordered table-hover table-striped">
     <tr>
         <th>ID</th>
         <th>Name</th>

@@ -40,7 +40,7 @@ public class FacilityServlet extends HttpServlet {
         request.setAttribute("villaList", villaList);
         request.setAttribute("houseList", houseList);
         request.setAttribute("roomList", roomList);
-        request.getRequestDispatcher("/list_facility.jsp").forward(request, response);
+        request.getRequestDispatcher("view/list_facility.jsp").forward(request, response);
     }
 
     @Override

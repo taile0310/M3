@@ -22,7 +22,7 @@ public class CustomerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("customerList",customerList);
-        request.getRequestDispatcher("/list_customer.jsp").forward(request,response);
+        request.getRequestDispatcher("view/list_customer.jsp").forward(request,response);
     }
 
     @Override

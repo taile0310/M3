@@ -17,7 +17,7 @@
 <h1 class="d-flex justify-content-center">Customer</h1>
 <tr><button class="btn btn-outline-success" type="submit">Add</button></tr>
 <form action="/customer" method="get"></form>
-<table class="table table-striped">
+<table class="table table-bordered table-striped">
     <tr>
         <th>ID</th>
         <th>Name</th>

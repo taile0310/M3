@@ -17,7 +17,6 @@
 <body>
 <h1>LIST PRODUCT</h1>
 <a class="btn btn-outline-primary" href="/product?action=create">Add New</a>
-<form method="get"></form>
 <table class="table table-view table-striped">
     <tr>
         <th>ID</th>
@@ -35,7 +34,7 @@
             <td>${product.price}</td>
             <td>${product.describe}</td>
             <td>${product.producer}</td>
-            <td><a class="btn btn-outline-secondary" href="/product?action=edit&id=${product.id}">Update</a></td>
+            <td><a class="btn btn-outline-secondary" href="/product?action=update&id=${product.id}">Update</a></td>
             <td><a class="btn btn-outline-danger" href="/product?action=delete&id=${product.id}">Delete</a></td>
 
         </tr>

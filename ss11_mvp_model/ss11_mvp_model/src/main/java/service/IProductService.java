@@ -11,12 +11,12 @@ public interface IProductService {
 
     void update(Product product);
 
-    void delete(String id);
+    void delete(int id);
 
     void showProduct(String id);
 
     void search(String name);
 
-    Product findById(String id);
+    Product findById(int id);
 
 }

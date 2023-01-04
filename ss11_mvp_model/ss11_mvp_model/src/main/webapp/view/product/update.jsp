@@ -17,13 +17,13 @@
 <body>
 <a class="btn btn-outline-primary" href="/product">Back to List</a>
 <div>
-    <form method="post" action="/product?action=update">
+    <form method="post" action="/product?action=update&id=${product.id}">
         <h4>Product</h4>
-        ID: <input type="text" name="name" placeholder="${id}">
-        Name: <input type="text" name="name" placeholder="${name}">
-        Price: <input type="text" name="name" placeholder="${price}">
-        Describe: <input type="text" name="name" placeholder="${describe}">
-        Producer: <input type="text" name="name" placeholder="${producer}">
+        ID: <input type="number" name="id" value="${product.id}" disabled>
+        Name: <input type="text" name="name" placeholder="${product.name}">
+        Price: <input type="text" name="price" placeholder="${product.price}">
+        Describe: <input type="text" name="describe" placeholder="${product.describe}">
+        Producer: <input type="text" name="producer" placeholder="${producer}">
         <button class="btn btn-outline-secondary" type="submit">Update</button>
     </form>
 </div>
