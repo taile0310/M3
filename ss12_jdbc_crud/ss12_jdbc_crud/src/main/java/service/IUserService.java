@@ -8,7 +8,7 @@ public interface IUserService {
     List<User> findAll();
     void add(User user);
     void update(User user);
-    void delete(int id);
+    boolean delete(int id);
     List<User> findByCountry(String country);
 
 }

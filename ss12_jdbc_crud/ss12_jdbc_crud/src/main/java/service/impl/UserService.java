@@ -24,13 +24,11 @@ public class UserService implements IUserService {
     @Override
     public void update(User user) {
         userRepository.update(user);
-
     }
 
     @Override
-    public void delete(int id) {
-    userRepository.delete(id);
-
+    public boolean delete(int id) {
+     return userRepository.delete(id);
     }
 
     @Override

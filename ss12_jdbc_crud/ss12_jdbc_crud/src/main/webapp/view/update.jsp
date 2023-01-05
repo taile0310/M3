@@ -14,11 +14,12 @@
       rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous">
 <body>
-<form action="/user?action=update" method="get">
-    <h4>Update User</h4>w
-    Name: <input type="text" name="name" placeholder="Input name" value="${user.name}">
-    Email: <input type="text" name="email" placeholder="Input email" value="${user.email}">
-    Country: <input type="text" name="country" placeholder="Input country" value="${user.country}">
+<form action="/user?action=update" method="post">
+    <h4>Update User</h4>
+    ID: <input type="text" name="id" value="${id}" readonly>
+    Name: <input type="text" name="name" placeholder="Input name">
+    Email: <input type="text" name="email" placeholder="Input email" >
+    Country: <input type="text" name="country" placeholder="Input country" >
     <button class="btn btn-outline-secondary" type="submit">Update</button>
 </form>
 </body>
