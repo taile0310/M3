@@ -21,8 +21,8 @@ public class UserService implements IUserService {
 
 
     @Override
-    public boolean add(User user) {
-        return userRepository.add(user);
+    public boolean add(User user , int[] permision) {
+        return userRepository.add(user, permision);
     }
 
     @Override

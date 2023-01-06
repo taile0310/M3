@@ -113,7 +113,8 @@ public class UserServlet extends HttpServlet {
         String email = req.getParameter("email");
         String country = req.getParameter("country");
         User user = new User(name, email, country);
-        boolean check = userService.add(user);
+        int[] permision = new int[0];
+        boolean check = userService.add(user, permision);
         String mess = "Add new success";
         if(!check){
             mess ="Not Add new success";

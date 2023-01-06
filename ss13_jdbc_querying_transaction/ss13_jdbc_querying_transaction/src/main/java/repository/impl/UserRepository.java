@@ -14,6 +14,7 @@ public class UserRepository implements IUserRepository {
     private final String DELETE_USER = "call delete_users(?)";
     private final String UPDATE_USER = "call update_users(?,?,?,?)";
     private final String SEARCH_COUNTRY = "select * from users where country = ?";
+    private final String PERMISION = "insert into user_permision(user_id,permision_id) value(?,?)";
 
     @Override
     public List<User> findAll() {
@@ -62,17 +63,40 @@ public class UserRepository implements IUserRepository {
 
 
     @Override
-    public boolean add(User user) {
-        Connection connection = BaseRepository.getConnectDB();
+    public boolean add(User user, int[] permision) {
+
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_INTO);
+            Connection connection = BaseRepository.getConnectDB();
+            connection.setAutoCommit(false);
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_INTO, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, user.getName());
             preparedStatement.setString(2, user.getEmail());
             preparedStatement.setString(3, user.getCountry());
-            return preparedStatement.executeUpdate() > 0;
+//            return preparedStatement.executeUpdate() > 0;
+            int rowAffected = preparedStatement.executeUpdate();
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            int userId;
+            if (preparedStatement.getGeneratedKeys().next()){
+
+                 userId = resultSet.getInt(1);
+
+                if (rowAffected == 1 ){
+                    preparedStatement = connection.prepareStatement(PERMISION);
+                    for (int per: permision) {
+                        preparedStatement.setInt(1,userId);
+                        preparedStatement.setInt(2,per);
+                        preparedStatement.executeUpdate();
+                    }
+                    connection.commit();
+                }else {
+                    connection.rollback();
+                }
+            }
+            return rowAffected > 0;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
     }
 
     @Override
