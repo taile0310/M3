@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: ss14_dependency_management_and_packing.PackingQuadraticEquat
+ ion
+
