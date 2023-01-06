@@ -1,8 +1,7 @@
-package furama.servlet;
+package furama.controller;
 
 import furama.model.facility.House;
 import furama.model.facility.Room;
-import furama.model.facility.Facility;
 import furama.model.facility.Villa;
 
 import javax.servlet.*;

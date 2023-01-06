@@ -3,7 +3,7 @@ plugins {
     id 'war'
 }
 
-group 'task'
+group 'furama'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -28,7 +28,6 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
     // https://mvnrepository.com/artifact/javax.servlet/jstl
     implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
-
 
 }
 

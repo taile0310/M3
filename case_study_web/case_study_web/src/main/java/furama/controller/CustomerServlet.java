@@ -1,4 +1,4 @@
-package furama.servlet;
+package furama.controller;
 
 import furama.model.person.Customer;
 

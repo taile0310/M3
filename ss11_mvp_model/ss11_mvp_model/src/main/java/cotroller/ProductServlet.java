@@ -48,9 +48,6 @@ public class ProductServlet extends HttpServlet {
             case "create":
                 showFormCreate(req, resp);
                 break;
-//            case "delete":
-//                showDelete(req, resp);
-//                break;
             case "delete":
                 delete(req, resp);
                 break;
