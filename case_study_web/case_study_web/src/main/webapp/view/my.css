@@ -95,12 +95,17 @@ ul.social-network li {
     background-color: #F9F9F9;
 }
 
-.img{
+.rows{
     width: 100%;
     height: 70%;
 }
 
-.rows{
+.slide-content{
     width: 100%;
-    height: 70%;
+    height: 100%;
+    padding: 0;
+}
+.slide-content img{
+    width: 100%;
+    height: 680px;
 }

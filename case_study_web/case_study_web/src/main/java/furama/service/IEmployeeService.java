@@ -6,7 +6,8 @@ import java.util.List;
 
 public interface IEmployeeService {
     List<Employee> findAll();
-    void add(Employee employee);
-    void update(String id);
-    void delete(String id);
+    boolean add(Employee employee);
+    boolean update(Employee employee);
+    boolean delete(int id);
+    List<Employee> findEmployee(String name);
 }

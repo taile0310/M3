@@ -13,11 +13,6 @@ import java.util.List;
 public class CustomerServlet extends HttpServlet {
     private static List<Customer> customerList = new ArrayList<>();
 
-    static {
-        customerList.add(new Customer("Nguyen A", "25/12/2000", "4567893", "036266667", "nguyena@gmail.com", "Diamond", "Da Nang"));
-        customerList.add(new Customer("Nguyen B", "20/12/2000", "4567892", "036664667", "nguyenab@gmail.com", "Platinium", "HCM"));
-        customerList.add(new Customer("Nguyen C", "15/12/2000", "4567891", "036666567", "nguyenac@gmail.com", "Gold", "Ha Noi"));
-    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

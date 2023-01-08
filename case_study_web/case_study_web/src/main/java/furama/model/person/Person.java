@@ -1,21 +1,44 @@
 package furama.model.person;
 
+import java.util.Date;
+
 public abstract class Person {
+    private  int id ;
     private String name;
     private String date_of_birth;
     private String id_card;
     private String phone;
     private String email;
+    private String address;
 
     public Person() {
     }
 
-    public Person(String name, String date_of_birth, String id_card, String phone, String email) {
+    public Person(int id, String name, String date_of_birth, String id_card, String phone, String email, String address) {
+        this.id = id;
         this.name = name;
         this.date_of_birth = date_of_birth;
         this.id_card = id_card;
         this.phone = phone;
         this.email = email;
+        this.address = address;
+    }
+
+    public Person(String name, String date_of_birth, String id_card, String phone, String email, String address) {
+        this.name = name;
+        this.date_of_birth = date_of_birth;
+        this.id_card = id_card;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -58,4 +81,11 @@ public abstract class Person {
         this.email = email;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }
