@@ -1,10 +1,11 @@
-package furama.service;
+package furama.repository;
+
 
 import furama.model.person.Customer;
 
 import java.util.List;
 
-public interface ICustomerService {
+public interface ICustomerRepository {
     List<Customer> findAll();
     boolean add(Customer customer);
     boolean update(Customer customer);

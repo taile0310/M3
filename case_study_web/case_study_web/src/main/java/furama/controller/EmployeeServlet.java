@@ -5,8 +5,6 @@ import furama.service.IEmployeeService;
 import furama.service.impl.EmployeeService;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
@@ -125,8 +123,4 @@ public class EmployeeServlet extends HttpServlet {
         showListEmployee(req,resp);
 
     }
-
-
-
-
 }

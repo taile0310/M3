@@ -1,19 +1,18 @@
 package furama.repository.impl;
 
 import furama.model.person.Employee;
-import furama.model.person.Person;
 import furama.repository.BaseRepository;
 import furama.repository.IEmployeeRepository;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 
 public class EmployeeRepository implements IEmployeeRepository {
     private final String SELECT_EMPLOYEE = "select * from employee";
     private final String INSERT_EMPLOYEE = "insert into employee  (`name`, date_of_birth, id_card, phone_number, email, address, salary, position_id, education_degree_id, division_id) values (?,?,?,?,?,?,?,?,?,?)";
-    private final String DELETE_EPLOYEE = "delete from employee where id = ?";
+    private final String DELETE_EMPLOYEE = "delete from employee where id = ?";
     private final String UPDATE_EMPLOYEE = "call update_employee (?,?,?,?,?,?,?,?,?,?,?)";
     private final String SEARCH_EMPLOYEE = "select * from employee where `name` like ?";
 
@@ -94,7 +93,7 @@ public class EmployeeRepository implements IEmployeeRepository {
     public boolean delete(int id) {
         Connection connection = BaseRepository.getConnectDB();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_EPLOYEE);
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_EMPLOYEE);
             preparedStatement.setInt(1, id);
             return preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {

@@ -18,7 +18,6 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public boolean add(Employee employee) {
         return employeeRepository.add(employee);
-
     }
 
     @Override

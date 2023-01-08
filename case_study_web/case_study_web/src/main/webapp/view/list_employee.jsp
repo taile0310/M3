@@ -135,7 +135,7 @@
             <form action="/employee?action=delete" method="post">
                 <div class="modal-body">
                     <input hidden type="text" id="deleteId" name="id">
-                    <span>You want delete user</span>
+                    <span>You want delete Employee</span>
                     <span style="color:red;" id="deleteName"></span>
                 </div>
                 <div class="modal-footer">
@@ -182,20 +182,19 @@
         </div>
     </div>
 </div>
+
 <script>
     function deleteEmployee(id, name) {
         document.getElementById("deleteId").value = id;
         document.getElementById("deleteName").innerText = name;
     }
-
-    function updateEmployee(id) {
-        document.getElementById("updateId").value = id;
+    function updateEmployee(id){
+        document.getElementById("deleteId").value = id;
     }
 </script>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous">
-
 </script>
 </html>
