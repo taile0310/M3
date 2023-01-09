@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "employeeServlet", value = "/contract")
+@WebServlet(name = "ContractServlet", value = "/contract")
 
 public class ContractServlet extends HttpServlet {
     private IContractService contractService = new ContractService();

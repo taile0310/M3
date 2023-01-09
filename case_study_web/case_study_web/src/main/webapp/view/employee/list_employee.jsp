@@ -10,9 +10,12 @@
 <html>
 <head>
     <title>Danh sách nhân viên</title>
+    <%--Phân trang--%>
+    <link rel="stylesheet" href="bootstrap520/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="datatables/css/dataTables.bootstrap5.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
 <body>
 
@@ -23,7 +26,7 @@
         <div>
             <nav class="navbar bg-body-tertiary">
                 <div class="container-fluid">
-                    <a href="view/furama.jsp" class="navbar-brand">Home</a>
+                    <a href="http://localhost:8080" class="navbar-brand">Home</a>
                     <form action="/employee?action=find" method="post" class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
@@ -39,7 +42,8 @@
 
 <p style="color: limegreen">${mess}</p>
 
-<table class="table table-bordered table-striped">
+<table class="table table-bordered table-striped container" id="tableEmployee">
+    <thead>
     <tr>
         <th>STT</th>
         <th>ID</th>
@@ -56,6 +60,8 @@
         <th>Update</th>
         <th>Delete</th>
     </tr>
+    </thead>
+    <tbody>
     <c:forEach var="employee" items="${employeeList}" varStatus="status">
         <tr>
             <td>${status.count}</td>
@@ -84,9 +90,10 @@
                         data-bs-whatever="@mdo">Delete
                 </button>
             </td>
-
         </tr>
     </c:forEach>
+    </tbody>
+
 </table>
 
 <%--Modal ADD--%>
@@ -188,9 +195,23 @@
         document.getElementById("deleteId").value = id;
         document.getElementById("deleteName").innerText = name;
     }
-    function updateEmployee(id){
+
+    function updateEmployee(id) {
         document.getElementById("deleteId").value = id;
     }
+</script>
+<%--Phân trang --%>
+<script src="jquery/jquery-3.5.1.min.js"></script>
+<script src="datatables/js/jquery.dataTables.min.js"></script>
+<script src="datatables/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#tableEmployee').dataTable({
+            "dom": 'lrtip',
+            "lengthChange": false,
+            "pageLength": 8
+        });
+    });
 </script>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"

@@ -58,7 +58,7 @@ public class CustomerServlet extends HttpServlet {
         String phone = request.getParameter("phone_number");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
-        String gender = request.getParameter("gender");
+        int gender = Integer.parseInt(request.getParameter("gender"));
         int customer_type = Integer.parseInt(request.getParameter("customer_type_id"));
         Customer customer = new Customer(name, date_of_birth, id_card, phone, email, address, gender, customer_type);
         boolean check = customerService.add(customer);
@@ -90,7 +90,7 @@ public class CustomerServlet extends HttpServlet {
         String phone = request.getParameter("phone_number");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
-        String gender = request.getParameter("gender");
+        byte gender = Byte.parseByte(request.getParameter("gender"));
         int customer_type = Integer.parseInt(request.getParameter("customer_type_id"));
         Customer customer = new Customer(id, name,date_of_birth,id_card,phone,email,address,gender,customer_type);
         customerService.update(customer);
@@ -101,7 +101,7 @@ public class CustomerServlet extends HttpServlet {
         List<Customer> customerList = customerService.findAll();
         request.setAttribute("customerList", customerList);
         try {
-            request.getRequestDispatcher("view/list_customer.jsp").forward(request, response);
+            request.getRequestDispatcher("view/customer/list_customer.jsp").forward(request, response);
         } catch (ServletException | IOException e) {
             throw new RuntimeException(e);
         }

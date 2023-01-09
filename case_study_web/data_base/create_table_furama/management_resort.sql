@@ -80,7 +80,7 @@ foreign key(customer_type_id) references customer_type (id)
 );
 
 create table facility (
-id int primary key,
+id int primary key auto_increment,
 `name` varchar(45),
 area int,
 cost double,

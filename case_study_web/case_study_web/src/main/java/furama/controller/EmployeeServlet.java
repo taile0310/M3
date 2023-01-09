@@ -10,7 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-@WebServlet(name = "employeeServlet", value = "/employee")
+@WebServlet(name = "EmployeeServlet", value = "/employee")
 public class EmployeeServlet extends HttpServlet {
     private IEmployeeService employeeService = new EmployeeService();
 
@@ -33,9 +33,9 @@ public class EmployeeServlet extends HttpServlet {
             case "find":
                 findEmployee(req, resp);
                 break;
-            default:
-                showListEmployee(req, resp);
-                break;
+//            default:
+//                showListEmployee(req, resp);
+//                break;
         }
 
     }
@@ -110,7 +110,7 @@ public class EmployeeServlet extends HttpServlet {
         List<Employee> employeeList = employeeService.findAll();
         req.setAttribute("employeeList", employeeList);
         try {
-            req.getRequestDispatcher("view/list_employee.jsp").forward(req, resp);
+            req.getRequestDispatcher("view/employee/list_employee.jsp").forward(req, resp);
         } catch (ServletException | IOException e) {
             throw new RuntimeException(e);
         }

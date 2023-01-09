@@ -43,6 +43,26 @@ insert into customer (`name`, date_of_birth, gender, id_card, phone_number, emai
 ('Nguyen F', '1995/01/12',1,'1234856','0345255555','d@gmail.com','Dak Lak',1),
 ('Nguyen H', '1990/01/12',1,'1234856','0343555555','d@gmail.com','Nghe An',4);
 
+-- thêm kiểu thuê
+insert into rent_type values (1, 'year'), 
+(2, 'month'), 
+(3, 'day'), 
+(4, 'hour');
+
+-- thêm loại cơ sở 
+insert into facility_type value (1, 'Villa'), 
+(2, 'House'), 
+(3, 'Room');
+
+-- thêm cơ sở 
+insert into facility (`name`, area,cost,max_people,standard_room,description_other_convenience,pool_area,number_of_floors,facility_free,rent_type_id,facility_type_id) values
+('Villa Beach',100,130000,20,'Vip','Có hồ bơi',12,2,'karaoke',3,1),
+('Room Twin',30,30000,4,'Normal','Điều hòa',null,null,'xe đạp',3,3),
+('House Twin',80,110000,10,'Good','Có hồ bơi',10,2,'bếp nấu ăn',3,2);
+;
+
+-- hiển thị cơ sở 
+select * from facility;
 
 -- hiển thị danh sách nhân viên 
 select * from employee;
@@ -64,5 +84,9 @@ call update_customer (11,'Nguyen HHH', '1990/01/12',1,'1234856','0343555555','d@
 
 -- tìm kiếm nhân viên theo tên  
 select * from employee where `name` like "% A";
+
+insert into customer (`name`, date_of_birth, gender, id_card, phone_number, email, address, customer_type_id) values
+('Nguyen AAAA', '1999/01/12',1,'1234506','0345555255','a@gmail.com','HCM',2);
+
 
 

@@ -10,12 +10,13 @@
 <html>
 <head>
     <title>Danh sách khách hàng</title>
+    <%--Phân trang--%>
     <link rel="stylesheet" href="bootstrap520/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="datatables/css/dataTables.bootstrap5.min.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
-<body style="background-color: beige">
+<body>
 
 <h1 class="d-flex justify-content-center">Customer</h1>
 
@@ -23,7 +24,7 @@
     <div>
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
-                <a href="view/furama.jsp" class="navbar-brand btn btn-outline-success">Home</a>
+                <a href="http://localhost:8080" class="navbar-brand btn btn-outline-success">Home</a>
                 <form action="/customer?action=find" method="post" class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search"
                            aria-label="Search">
@@ -105,7 +106,14 @@
                         Name: <input type="text" name="name" placeholder="Name"/><br/>
                         Date of Birth: <input type="text" name="date_of_birth"
                                               placeholder="Date of Birth"/><br/>
-                        Gender: <input type="number" name="gender" placeholder="Gender"/><br/>
+                        Gender: <select name="gender">
+                        <option value="0">
+                            Nam
+                        </option>
+                        <option value="1">
+                            Nữ
+                        </option>
+                    </select>
                         ID Card: <input type="text" name="id_card" placeholder="ID Card"/><br/>
                         Phone: <input type="text" name="phone_number" placeholder="Phone"/><br/>
                         Email: <input type="text" name="email" placeholder="Email"/><br/>
@@ -163,7 +171,14 @@
                         ID: <input type="number" name="id" id="updateId" value="${id}" readonly>
                         Name: <input type="text" name="name" placeholder="Name"/><br/>
                         Date of Birth: <input type="date" name="date_of_birth" placeholder="Date of Birth"/><br/>
-                        Gender: <input type="number" name="gender" placeholder="Gender"/><br/>
+                        Gender: Gender: <select name="gender">
+                        <option value="0">
+                            Nam
+                        </option>
+                        <option value="1">
+                            Nữ
+                        </option>
+                    </select>
                         ID Card: <input type="text" name="id_card" placeholder="ID Card"/><br/>
                         Phone: <input type="text" name="phone" placeholder="Phone"/><br/>
                         Email: <input type="text" name="email" placeholder="Email"/><br/>
@@ -186,11 +201,11 @@
         document.getElementById("deleteName").innerText = name;
     }
 
-    function updateCustomer(id){
+    function updateCustomer(id) {
         document.getElementById("updateId").value = id;
     }
 </script>
-
+<%--Phân trang--%>
 <script src="jquery/jquery-3.5.1.min.js"></script>
 <script src="datatables/js/jquery.dataTables.min.js"></script>
 <script src="datatables/js/dataTables.bootstrap5.min.js"></script>
