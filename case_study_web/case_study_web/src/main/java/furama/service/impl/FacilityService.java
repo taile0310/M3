@@ -21,7 +21,7 @@ public class FacilityService implements IFacilityService {
 
     @Override
     public boolean update(Facility facility) {
-        return false;
+        return facilityRepository.update(facility);
     }
 
     @Override

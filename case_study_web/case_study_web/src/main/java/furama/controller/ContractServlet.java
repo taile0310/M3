@@ -1,6 +1,6 @@
 package furama.controller;
 
-import furama.model.Contract;
+import furama.model.facility.Contract;
 import furama.service.IContractService;
 import furama.service.impl.ContractService;
 

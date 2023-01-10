@@ -1,6 +1,6 @@
 package furama.service.impl;
 
-import furama.model.Contract;
+import furama.model.facility.Contract;
 import furama.repository.IContractRepository;
 import furama.repository.impl.ContractRepository;
 import furama.service.IContractService;
@@ -29,4 +29,7 @@ public class ContractService implements IContractService {
     public boolean updateContract(Contract contract) {
         return false;
     }
+
 }
+
+

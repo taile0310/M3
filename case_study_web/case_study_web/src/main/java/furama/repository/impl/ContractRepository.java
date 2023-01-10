@@ -1,6 +1,6 @@
 package furama.repository.impl;
 
-import furama.model.Contract;
+import furama.model.facility.Contract;
 import furama.repository.IContractRepository;
 
 import java.util.ArrayList;

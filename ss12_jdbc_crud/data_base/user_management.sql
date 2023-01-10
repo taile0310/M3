@@ -10,11 +10,11 @@ create table users (
 );
 
 delimiter // 
-create procedure delete_users(in id int) begin 
-delete from 
-  users u 
+create procedure delete_users(in id int) 
+begin 
+delete from users 
 where 
-  u.id = id;
+  users.id = id;
 end //
 delimiter ;
 

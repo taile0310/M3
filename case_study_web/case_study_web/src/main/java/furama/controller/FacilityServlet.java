@@ -3,8 +3,14 @@ package furama.controller;
 
 
 import furama.model.facility.Facility;
+import furama.model.facility.FacilityType;
+import furama.model.facility.RentType;
 import furama.service.IFacilityService;
+import furama.service.IFacilityTypeService;
+import furama.service.IRentTypeService;
 import furama.service.impl.FacilityService;
+import furama.service.impl.FacilityTypeService;
+import furama.service.impl.RentTypeService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -17,6 +23,8 @@ import java.util.List;
 @WebServlet(name = "FacilityServlet", value = "/facility")
 public class FacilityServlet extends HttpServlet {
     private IFacilityService facilityService = new FacilityService();
+    private IRentTypeService rentTypeService = new RentTypeService();
+    private IFacilityTypeService facilityTypeService = new FacilityTypeService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,8 +55,35 @@ public class FacilityServlet extends HttpServlet {
             case "delete":
                 deleteFacility(request,response);
                 break;
+            case "update":
+                updateFacility(request,response);
+                break;
         }
 
+    }
+
+    private void updateFacility(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        int area = Integer.parseInt(request.getParameter("area"));
+        double cost = Double.parseDouble(request.getParameter("cost"));
+        int max_people = Integer.parseInt(request.getParameter("max_people"));
+        String standard_room = request.getParameter("standard_room");
+        String description_other_convenience = request.getParameter("description_other_convenience");
+        double pool_area = Double.parseDouble(request.getParameter("pool_area"));
+        int number_of_floors = Integer.parseInt(request.getParameter("number_of_floors"));
+        String facility_free = request.getParameter("facility_free");
+        int rent_type = Integer.parseInt(request.getParameter("rent_type"));
+        int facility_type = Integer.parseInt(request.getParameter("facility_type"));
+        Facility facility = new Facility(id, name,area,cost,max_people,standard_room,description_other_convenience,
+                pool_area,number_of_floors,facility_free,rent_type,facility_type);
+        boolean check = facilityService.update(facility);
+        String mess = "Update Facility Success";
+        if (!check){
+            mess = "Not Update Facility Success";
+        }
+        request.setAttribute("mess", mess);
+        showListFacility(request,response);
     }
 
     private void deleteFacility(HttpServletRequest request, HttpServletResponse response) {
@@ -89,6 +124,10 @@ public class FacilityServlet extends HttpServlet {
     private void showListFacility(HttpServletRequest request, HttpServletResponse response) {
         List<Facility> facilityList = facilityService.findAll();
         request.setAttribute("facilityList",facilityList);
+        List<RentType> rentTypeList = rentTypeService.findAll();
+        request.setAttribute("rentTypeList",rentTypeList);
+        List<FacilityType> facilityTypeList = facilityTypeService.findAll();
+        request.setAttribute("facilityTypeList",facilityTypeList);
         try {
             request.getRequestDispatcher("view/facility/list_facility.jsp").forward(request,response);
         } catch (ServletException | IOException e) {

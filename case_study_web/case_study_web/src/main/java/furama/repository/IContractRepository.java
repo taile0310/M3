@@ -1,6 +1,6 @@
 package furama.repository;
 
-import furama.model.Contract;
+import furama.model.facility.Contract;
 
 import java.util.List;
 

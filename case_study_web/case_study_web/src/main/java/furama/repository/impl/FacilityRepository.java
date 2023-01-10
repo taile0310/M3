@@ -4,10 +4,7 @@ import furama.model.facility.Facility;
 import furama.repository.BaseRepository;
 import furama.repository.IFacilityRepository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +12,7 @@ public class FacilityRepository implements IFacilityRepository {
     private final String SELECT_FACILITY = "select * from facility";
     private final String INSERT_FACILITY= "insert into facility (`name`, area,cost,max_people,standard_room,description_other_convenience,pool_area,number_of_floors,facility_free,rent_type_id,facility_type_id) values (?,?,?,?,?,?,?,?,?,?,?)";
     private final String DELETE_FACILITY = "delete from facility where id = ?";
+    private final String UPDATE_FACILITY = "call update_facility (?,?,?,?,?,?,?,?,?,?,?,?)";
     @Override
     public List<Facility> findAll() {
         List<Facility> facilityList = new ArrayList<>();
@@ -70,7 +68,26 @@ public class FacilityRepository implements IFacilityRepository {
 
     @Override
     public boolean update(Facility facility) {
-        return false;
+        Connection connection = BaseRepository.getConnectDB();
+        try {
+            CallableStatement callableStatement = connection.prepareCall(UPDATE_FACILITY);
+            callableStatement.setInt(1,facility.getId());
+            callableStatement.setString(2,facility.getName());
+            callableStatement.setInt(3,facility.getArea());
+            callableStatement.setDouble(4,facility.getCost());
+            callableStatement.setInt(5,facility.getMax_people());
+            callableStatement.setString(6,facility.getStandard_room());
+            callableStatement.setString(7,facility.getDescription_other_convenience());
+            callableStatement.setDouble(8,facility.getPool_area());
+            callableStatement.setInt(9,facility.getNumber_of_floors());
+            callableStatement.setString(10,facility.getFacility_free());
+            callableStatement.setInt(11,facility.getRent_type());
+            callableStatement.setInt(12,facility.getFacility_type());
+            return callableStatement.executeUpdate() > 0 ;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override

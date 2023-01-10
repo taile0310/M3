@@ -36,56 +36,68 @@
         </button>
     </div>
 </tr>
-<p>${mess}</p>
+<p style="color: limegreen">${mess}</p>
 <table class="container-fluid table table-bordered table-striped " id="tableFacility">
-        <thead>
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Area</th>
+        <th>Cost</th>
+        <th>Max people</th>
+        <th>Standard Room</th>
+        <th>Description Other Convenience</th>
+        <th>Pool area</th>
+        <th>Number floors</th>
+        <th>Facility free</th>
+        <th>Rent type</th>
+        <th>Facility Type</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="facilityList" items="${facilityList}" varStatus="status">
         <tr>
-            <th>STT</th>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Area</th>
-            <th>Cost</th>
-            <th>Max people</th>
-            <th>Standard Room</th>
-            <th>Description Other Convenience</th>
-            <th>Pool area</th>
-            <th>Number floors</th>
-            <th>Facility free</th>
-            <th>Rent type</th>
-            <th>Facility Type</th>
-            <th>Update</th>
-            <th>Delete</th>
+            <td>${status.count}</td>
+            <td>${facilityList.id}</td>
+            <td>${facilityList.name}</td>
+            <td>${facilityList.area}</td>
+            <td>${facilityList.cost}</td>
+            <td>${facilityList.max_people}</td>
+            <td>${facilityList.standard_room}</td>
+            <td>${facilityList.description_other_convenience}</td>
+            <td>${facilityList.pool_area}</td>
+            <td>${facilityList.number_of_floors}</td>
+            <td>${facilityList.facility_free}</td>
+            <c:forEach var="rentTypeList" items="${rentTypeList}">
+                <c:if test="${facilityList.rent_type == rentTypeList.id}">
+                   <td> ${rentTypeList.name}</td>
+                </c:if>
+            </c:forEach>
+            <c:forEach var="facilityTypeList" items="${facilityTypeList}">
+                <c:if test="${facilityList.facility_type == facilityTypeList.id}">
+                    <td>${facilityTypeList.name}</td>
+                </c:if>
+            </c:forEach>
+            <td>
+                <button onclick="updateFacility(${facilityList.id})" type="submit" class="btn btn-outline-secondary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModalUpdate"
+                        data-bs-whatever="@mdo">Update
+                </button>
+            </td>
+            <td>
+                <button onclick="deleteFacility('${facilityList.id}','${facilityList.name}')" type="button"
+                        class="btn btn-outline-success" data-bs-toggle="modal"
+                        data-bs-target="#exampleModalDelete"
+                        data-bs-whatever="@mdo">Delete
+                </button>
+            </td>
         </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="facilityList" items="${facilityList}" varStatus="status">
-            <tr>
-                <td>${status.count}</td>
-                <td>${facilityList.id}</td>
-                <td>${facilityList.name}</td>
-                <td>${facilityList.area}</td>
-                <td>${facilityList.cost}</td>
-                <td>${facilityList.max_people}</td>
-                <td>${facilityList.standard_room}</td>
-                <td>${facilityList.description_other_convenience}</td>
-                <td>${facilityList.pool_area}</td>
-                <td>${facilityList.number_of_floors}</td>
-                <td>${facilityList.facility_free}</td>
-                <td>${facilityList.rent_type}</td>
-                <td>${facilityList.facility_type}</td>
-                <td>
-                    <button class="btn btn-outline-warning" type="submit">Update</button>
-                </td>
-                <td>
-                    <button onclick="deleteFacility('${facilityList.id}','${facilityList.name}')" type="button"
-                            class="btn btn-outline-success" data-bs-toggle="modal"
-                            data-bs-target="#exampleModalDelete"
-                            data-bs-whatever="@mdo">Delete
-                    </button>
-                </td>
-            </tr>
-        </c:forEach>
-        </tbody>
+    </c:forEach>
+    </tbody>
 </table>
 
 
@@ -107,46 +119,36 @@
                 <form action="/facility?action=add" method="post">
                     <fieldset>
                         <legend>Add Facility</legend>
-                        Name: <input type="text" name="name" placeholder="Name"/><br/>
-                        Area : <input type="number" name="area" placeholder="Area"/><br/>
-                        Cost: <input type="number" name="cost" placeholder="Cost"/><br/>
-                        Max People: <input type="number" name="max_people" placeholder="Max People"/><br/>
+                        Name: <input type="text" name="name" placeholder="Name"/><br>
+                        Area : <input type="number" name="area" placeholder="Area"/><br>
+                        Cost: <input type="number" name="cost" placeholder="Cost"/><br>
+                        Max People: <input type="number" name="max_people" placeholder="Max People"/><br>
                         Standard Room: <input id="standardRoom" type="text" name="standard_room"
-                                              placeholder="Standard Room"/><br/>
+                                              placeholder="Standard Room"/><br>
                         Description Other Convenience: <input id="description" type="text"
                                                               name="description_other_convenience"
-                                                              placeholder="Description Other Convenience"/><br/>
-                        Pool Area: <input id="poolArea" type="number" name="pool_area" placeholder="Pool Area"/><br/>
-                        Num Of Floors: <input id="numberOfFloors" type="number" name="number_of_floors"
-                                              placeholder="Num Of Floors"/><br/>
+                                                              placeholder="Description Other Convenience"/><br>
+                        Pool Area: <input value="0.0" id="poolArea" type="number" name="pool_area"
+                                          placeholder="Pool Area"/><br>
+                        Num Of Floors: <input value="0" id="numberOfFloors" type="number" name="number_of_floors"
+                                              placeholder="Num Of Floors"/><br>
                         Facility Free: <input id="facilityFree" type="text" name="facility_free"
-                                              placeholder="Facility Free"/><br/>
+                                              placeholder="Facility Free"/><br>
                         Rent Type:
                         <select name="rent_type">
-                            <option value="1">
-                                Year
-                            </option>
-                            <option value="2">
-                                Month
-                            </option>
-                            <option value="3">
-                                Day
-                            </option>
-                            <option value="4">
-                                Hour
-                            </option>
+                            <c:forEach var="rentTypeList" items="${rentTypeList}">
+                                <option value="${rentTypeList.id}">
+                                        ${rentTypeList.name}
+                                </option>
+                            </c:forEach>
                         </select>
                         Facility Type:
                         <select name="facility_type">
-                            <option value="1">
-                                Villa
-                            </option>
-                            <option value="2">
-                                House
-                            </option>
-                            <option value="3">
-                                Room
-                            </option>
+                            <c:forEach var="facilityTypeList" items="${facilityTypeList}">
+                                <option value="${facilityTypeList.id}">
+                                        ${facilityTypeList.name}
+                                </option>
+                            </c:forEach>
                         </select>
                     </fieldset>
                     <div class="modal-footer">
@@ -183,10 +185,77 @@
     </div>
 </div>
 
+
+<%--Modal update facility--%>
+<div class="modal fade" id="exampleModalUpdate" tabindex="-1" aria-labelledby="exampleModalLabelUpdate" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="justify-content-center modal-title fs-5" id="exampleModalLabelUpdate"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex justify-content-center">
+                    <input hidden type="text" name="updateFacilityTypeId" id="updateFacilityTypeId">
+                    <button type="button" class="btn btn-outline-success" onclick="updateVilla()">Villa</button>
+                    <button type="button" class="btn btn-outline-success" onclick="updateHouse()">House</button>
+                    <button type="button" class="btn btn-outline-success" onclick="updateRoom()">Room</button>
+                </div>
+                <form action="/facility?action=update" method="post">
+                    <fieldset>
+                        <legend>Update Facility</legend>
+                        ID: <input type="number" name="id" id="updateId" value="${id}" readonly>
+                        Name: <input type="text" name="name" placeholder="Name"/><br>
+                        Area : <input type="number" name="area" placeholder="Area"/><br>
+                        Cost: <input type="number" name="cost" placeholder="Cost"/><br>
+                        Max People: <input type="number" name="max_people" placeholder="Max People"/><br>
+                        Standard Room: <input id="updateStandardRoom" type="text" name="standard_room"
+                                              placeholder="Standard Room"/><br>
+                        Description Other Convenience: <input id="updateDescription" type="text"
+                                                              name="description_other_convenience"
+                                                              placeholder="Description Other Convenience"/><br>
+                        Pool Area: <input value="0.0" id="updatePoolArea" type="number" name="pool_area"
+                                          placeholder="Pool Area"/><br>
+                        Num Of Floors: <input value="0" id="updateNumberOfFloors" type="number" name="number_of_floors"
+                                              placeholder="Num Of Floors"/><br>
+                        Facility Free: <input id="updateFacilityFree" type="text" name="facility_free"
+                                              placeholder="Facility Free"/><br>
+                        Rent Type:
+                        <select name="rent_type">
+                            <c:forEach var="rentTypeList" items="${rentTypeList}">
+                                <option value="${rentTypeList.id}">
+                                        ${rentTypeList.name}
+                                </option>
+                            </c:forEach>
+                        </select>
+                        Facility Type:
+                        <select name="facility_type">
+                            <c:forEach var="facilityTypeList" items="${facilityTypeList}">
+                                <option value="${facilityTypeList.id}">
+                                        ${facilityTypeList.name}
+                                </option>
+                            </c:forEach>
+                        </select>
+                    </fieldset>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update Facility</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     function deleteFacility(id, name) {
         document.getElementById("deleteId").value = id;
         document.getElementById("deleteName").innerText = name;
+    }
+
+    function updateFacility(id){
+        document.getElementById("updateId").value = id;
+
     }
 
     function addVilla() {
@@ -215,8 +284,36 @@
         document.getElementById("numberOfFloors").style.display = 'none';
         document.getElementById("facilityFree").style.display = 'block';
     }
+
+    function updateVilla() {
+        document.getElementById("updateFacilityTypeId").value = 1;
+        document.getElementById("updateStandardRoom").style.display = 'block';
+        document.getElementById("updateDescription").style.display = 'block';
+        document.getElementById("updatePoolArea").style.display = 'block';
+        document.getElementById("updateNumberOfFloors").style.display = 'block';
+        document.getElementById("updateFacilityFree").style.display = 'block';
+    }
+
+    function updateHouse() {
+        document.getElementById("updateFacilityTypeId").value = 2;
+        document.getElementById("updateStandardRoom").style.display = 'block';
+        document.getElementById("updateDescription").style.display = 'block';
+        document.getElementById("updatePoolArea").style.display = 'block';
+        document.getElementById("updateNumberOfFloors").style.display = 'block';
+        document.getElementById("updateFacilityFree").style.display = 'block';
+    }
+
+    function updateRoom() {
+        document.getElementById("updateFacilityTypeId").value = 3;
+        document.getElementById("updateStandardRoom").style.display = 'block';
+        document.getElementById("updateDescription").style.display = 'block';
+        document.getElementById("updatePoolArea").style.display = 'none';
+        document.getElementById("updateNumberOfFloors").style.display = 'none';
+        document.getElementById("updateFacilityFree").style.display = 'block';
+    }
 </script>
 </body>
+
 <%--Phân trang--%>
 <script src="jquery/jquery-3.5.1.min.js"></script>
 <script src="datatables/js/jquery.dataTables.min.js"></script>

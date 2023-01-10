@@ -67,6 +67,10 @@ select * from facility;
 -- hiển thị danh sách nhân viên 
 select * from employee;
 
+select * from customer_type;
+select * from rent_type;
+select * from facility_type;
+
 -- hiển thị danh sách khách hàng
 select * from customer;
 

@@ -96,6 +96,9 @@ foreign key(rent_type_id) references rent_type (id),
 foreign key(facility_type_id) references facility_type(id)
 );
 
+
+
+
 create table contract (
 id int primary key,
 start_date datetime,
@@ -175,7 +178,46 @@ address = c_address,
 customer_type_id = c_customer_type_id
 where id = c_id;
 end //
-delimiter 
+delimiter ;
+
+-- tạo SP update facility
+delimiter // 
+create procedure update_facility
+( in f_id int,
+f_name varchar(45),
+f_area int,
+f_cost double,
+f_max_people int,
+f_standard_room varchar(45),
+f_description_other_convenience varchar(255),
+f_pool_area double,
+f_number_of_floors int,
+f_facility_free text,
+f_rent_type_id int,
+f_facility_type_id int)
+begin
+update 
+facility 
+set
+id = f_id,
+`name`= f_name,
+area =f_area,
+cost =f_cost,
+max_people = f_max_people,
+standard_room =f_standard_room,
+description_other_convenience = f_description_other_convenience,
+pool_area = f_pool_area,
+number_of_floors = f_number_of_floors,
+facility_free = f_facility_free,
+rent_type_id = f_rent_type_id,
+facility_type_id = f_facility_type_id
+where 
+id = f_id;
+end // 
+delimiter ;
+
+
+
 
 
 

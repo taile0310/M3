@@ -40,7 +40,7 @@
     </div>
 </tr>
 
-<p>${mess}</p>
+<p style="color: limegreen">${mess}</p>
 
 <table class="table table-bordered table-striped container" id="tableCustomer">
     <thead>
@@ -66,12 +66,21 @@
             <td>${customer.id}</td>
             <td>${customer.name}</td>
             <td>${customer.date_of_birth}</td>
-            <td>${customer.gender}</td>
+            <c:if test="${customer.gender == 0}">
+                <td> Nam</td>
+            </c:if>
+            <c:if test="${customer.gender == 1}">
+                <td> Nữ</td>
+            </c:if>
             <td>${customer.id_card}</td>
             <td>${customer.phone}</td>
             <td>${customer.email}</td>
             <td>${customer.address}</td>
-            <td>${customer.customer_type}</td>
+            <c:forEach var="customerTypeList" items="${customerTypeList}">
+                <c:if test="${customer.customer_type == customerTypeList.id}">
+                    <td> ${customerTypeList.name}</td>
+                </c:if>
+            </c:forEach>
             <td>
                 <button onclick="updateCustomer(${customer.id})" type="submit" class="btn btn-outline-secondary"
                         data-bs-toggle="modal"
@@ -106,20 +115,25 @@
                         Name: <input type="text" name="name" placeholder="Name"/><br/>
                         Date of Birth: <input type="text" name="date_of_birth"
                                               placeholder="Date of Birth"/><br/>
-                        Gender: <select name="gender">
-                        <option value="0">
-                            Nam
-                        </option>
-                        <option value="1">
-                            Nữ
-                        </option>
-                    </select>
+                        Gender:
+                        <select name="gender">
+                            <option value="0">
+                                Nam
+                            </option>
+                            <option value="1">
+                                Nữ
+                            </option>
+                        </select>
                         ID Card: <input type="text" name="id_card" placeholder="ID Card"/><br/>
                         Phone: <input type="text" name="phone_number" placeholder="Phone"/><br/>
                         Email: <input type="text" name="email" placeholder="Email"/><br/>
                         Address: <input type="text" name="address" placeholder="Address"/><br/>
-                        Customer Type: <input type="number" name="customer_type_id"
-                                              placeholder="Customer Type"/><br/>
+                        Customer Type:
+                        <select name="customer_type_id">
+                            <c:forEach var="customerTypeList" items="${customerTypeList}">
+                                <option value="${customerTypeList.id}">${customerTypeList.name}</option>
+                            </c:forEach>
+                        </select>
                     </fieldset>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -183,7 +197,11 @@
                         Phone: <input type="text" name="phone" placeholder="Phone"/><br/>
                         Email: <input type="text" name="email" placeholder="Email"/><br/>
                         Address: <input type="text" name="address" placeholder="Address"/><br/>
-                        Customer type: <input type="number" name="customer_type_id" placeholder="Customer type"/><br/>
+                        <select name="customer_type_id">
+                            <c:forEach var="customerTypeList" items="${customerTypeList}">
+                                <option value="${customerTypeList.id}">${customerTypeList.name}</option>
+                            </c:forEach>
+                        </select>
                     </fieldset>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

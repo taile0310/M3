@@ -1,8 +1,11 @@
 package furama.controller;
 
+import furama.model.facility.CustomerType;
 import furama.model.person.Customer;
 import furama.service.ICustomerService;
+import furama.service.ICustomerTypeService;
 import furama.service.impl.CustomerService;
+import furama.service.impl.CustomerTypeService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -13,6 +16,7 @@ import java.util.List;
 @WebServlet(name = "CustomerServlet", value = "/customer")
 public class CustomerServlet extends HttpServlet {
     private ICustomerService customerService = new CustomerService();
+    private ICustomerTypeService customerTypeService = new CustomerTypeService();
 
 
     @Override
@@ -47,9 +51,6 @@ public class CustomerServlet extends HttpServlet {
                 break;
         }
     }
-
-
-
 
     private void addCustomer(HttpServletRequest request, HttpServletResponse response) {
         String name = request.getParameter("name");
@@ -100,11 +101,12 @@ public class CustomerServlet extends HttpServlet {
     private void showListCustomer(HttpServletRequest request, HttpServletResponse response) {
         List<Customer> customerList = customerService.findAll();
         request.setAttribute("customerList", customerList);
+        List<CustomerType> customerTypeList = customerTypeService.findAll();
+        request.setAttribute("customerTypeList",customerTypeList);
         try {
             request.getRequestDispatcher("view/customer/list_customer.jsp").forward(request, response);
         } catch (ServletException | IOException e) {
             throw new RuntimeException(e);
         }
     }
-
 }
